@@ -1,0 +1,26 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  gap: 0.8rem;
+
+  margin: auto;
+  max-width: 250px;
+
+  font-size: 1.2rem;
+}
+
+.slanted {
+  position: relative;
+  transform: translate(1.6rem, -3rem);
+  rotate: -4deg;
+}
+
+.subText {
+  font-family: mono;
+}
+
+.caretSpacer {
+  width: 1.2rem;
+}
