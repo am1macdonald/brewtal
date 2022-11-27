@@ -10,7 +10,7 @@ const Login = ({ hello }: props) => {
       <div>
         <h1>Brewtal</h1>
         <p className={styles.subText}>
-          <strike>Stop</strike>
+          <del>Stop</del>
           <span className={styles.caretSpacer}>^</span>the grind.
         </p>
         <p className={styles.slanted}>Love</p>
