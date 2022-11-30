@@ -8,7 +8,7 @@ const Login = ({ hello }: props) => {
   return (
     <>
       <div>
-        <h1>Brewtal</h1>
+        <h1 className={styles.h1}>Brewtal</h1>
         <p className={styles.subText}>
           <del>Stop</del>
           <span className={styles.caretSpacer}>^</span>the grind.

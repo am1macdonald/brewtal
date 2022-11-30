@@ -5,6 +5,8 @@ import Head from "next/head";
 // import { signIn, signOut, useSession } from "next-auth/react";
 import { trpc } from "../utils/trpc";
 
+import bg from "public/pexels-adam-lukac-773958.jpg";
+
 // fonts
 
 import { Montagu_Slab, Overpass_Mono } from "@next/font/google";
@@ -30,6 +32,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main
+        style={{ backgroundImage: `url(${bg.src})` }}
         className={`flex min-h-screen flex-col items-center justify-center ${montagu.variable} font-sans`}
       >
         <Login hello={hello.data?.greeting} />

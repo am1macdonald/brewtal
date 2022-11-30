@@ -9,8 +9,10 @@ $orange: #d15a38;
 $blurange: #021c15;
 
 main {
-  background-color: $beige;
   color: $blurange;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 
   &::after {
     position: fixed;
