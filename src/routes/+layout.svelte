@@ -1,3 +1,5 @@
+<slot />
+
 <style>
 	@tailwind base;
 	@tailwind components;
