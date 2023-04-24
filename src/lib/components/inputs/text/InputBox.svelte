@@ -6,6 +6,7 @@
 
 <label for={name}>{name}</label><input
 	class="h-full w-full bg-gray-300 invalid:outline-red-600"
+	{name}
 	type="text"
 	id={name}
 	{required}

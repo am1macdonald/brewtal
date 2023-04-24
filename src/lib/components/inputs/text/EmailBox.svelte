@@ -7,6 +7,7 @@
 <label for={name}>{name}</label><input
 	class="h-full w-full bg-gray-300 invalid:outline-red-600"
 	type="email"
+	{name}
 	{required}
 	id={name}
 	bind:this={binding}

@@ -1,28 +1,41 @@
-import { variables } from '$lib/variables';
-import type {Actions} from "@sveltejs/kit";
+import type { Actions } from './$types';
+import { fail, redirect } from '@sveltejs/kit';
+import { AuthApiError } from '@supabase/supabase-js';
 
-export const actions = {
-	login: async (event: any) => {
-		console.log(event);
-		// const data = await event.request.formData();
-		// const formData = new FormData();
-		// if (data) {
-		// 	formData.append('email', data.get('login-email') ?? '');
-		// 	formData.append('password', data.get('login-password') ?? '');
-		// }
-		// const url = `${variables.apiBasePath}/newsletter/register`;
-		// console.log(formData, url)
-		// try {
-		// 	const response = await fetch(url, {
-		// 		method: 'POST',
-		// 		body: formData
-		// 	});
-		// 	console.log(response);
-		// } catch (error) {
-		// 	console.log(error);
-		// }
-		//
+export const actions: Actions = {
+  signin: async ({ request, locals: { supabase } }) => {
+    const formData = await request.formData();
 
-	}
-} satisfies Actions;
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
 
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) {
+      if (error instanceof AuthApiError && error.status === 400) {
+        return fail(400, {
+          error: 'Invalid credentials.',
+          values: {
+            email
+          }
+        });
+      }
+      return fail(500, {
+        error: 'Server error. Try again later.',
+        values: {
+          email
+        }
+      });
+    }
+
+    throw redirect(303, '/dashboard');
+  },
+
+  signout: async ({ locals: { supabase } }) => {
+    await supabase.auth.signOut();
+    throw redirect(303, '/');
+  }
+};

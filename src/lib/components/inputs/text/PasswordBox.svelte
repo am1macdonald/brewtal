@@ -8,6 +8,7 @@
 	class="h-full w-full bg-gray-300 invalid:outline-red-600"
 	type="password"
 	id={name}
+	{name}
 	{required}
 	minlength="20"
 	bind:this={binding}

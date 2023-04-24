@@ -1,22 +1,15 @@
 <script lang="ts">
-	import InputBox from '../../../lib/components/inputs/text/InputBox.svelte';
-	import Modal from '../../../lib/components/containers/Modal.svelte';
-	import { signInWithGoogle } from '../../../lib/authService';
-	import AppButton from '../../../lib/components/inputs/buttons/AppButton.svelte';
+	import Modal from '$lib/components/containers/Modal.svelte';
+	import { signInWithGoogle } from '$lib/authService';
+	import AppButton from '$lib/components/inputs/buttons/AppButton.svelte';
 	import EmailBox from '$lib/components/inputs/text/EmailBox.svelte';
 	import PasswordBox from '$lib/components/inputs/text/PasswordBox.svelte';
 
-	export let form;
 	let showEmail = false;
+	export let form;
 
 	async function handleGoogle() {
 		await signInWithGoogle();
-	}
-
-	async function handleEmail() {}
-
-	function validatePassword() {
-		console.log(form);
 	}
 
 	function showHideEmail() {
@@ -25,7 +18,7 @@
 </script>
 
 <Modal>
-	{#if !showEmail}
+	{#if !showEmail && !form}
 		<div>
 			<h3 class="mb-10 text-5xl">hey</h3>
 			<div class="flex flex-col items-center justify-center gap-1">
@@ -34,13 +27,16 @@
 				<AppButton btnText={'Email'} on:message={showHideEmail} />
 			</div>
 		</div>
-	{:else if showEmail}
+	{:else if form?.success}
+		<div>WOW</div>
+	{:else}
 		<div class="w-96">
 			<h3 class="text-5xl">sign-up</h3>
 			<form method="POST" action="?/signup" class="bg-none mb-2">
-				<EmailBox name="Email" required="true" />
-				<PasswordBox name="Password" required="true" />
-				<PasswordBox name="Verify Password" required="true" />
+				<EmailBox name="email" required={true} />
+				<PasswordBox name="password" required={true} />
+				<PasswordBox name="verify" required={true} />
+				{#if form?.incorrect}<p class="error">Passwords do not match!</p>{/if}
 				<button type="submit">submit</button>
 			</form>
 
