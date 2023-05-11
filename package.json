@@ -38,6 +38,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@supabase/auth-helpers-sveltekit": "^0.9.4"
+		"@supabase/auth-helpers-sveltekit": "^0.9.4",
+		"rxjs": "^7.8.1"
 	}
 }
