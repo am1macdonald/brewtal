@@ -10,7 +10,7 @@
 
 <AppSidePanel>
 	<div slot="sidePanel">
-		<h6>BREWTAL</h6>
+		<h6 class='text-3xl'>BREWTAL</h6>
 		<ul>
 			{#each links as { text, route }}
 				<li>
