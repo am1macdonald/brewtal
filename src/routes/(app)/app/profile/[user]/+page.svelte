@@ -4,13 +4,20 @@
 </script>
 
 <div class="h-screen flex-1">
-	<Container
-		><div>
+	<Container>
+    <div>
 			<div class="bg-gray-400 h-36 w-24">
 				<img alt="profile pic" src="#" />
 				<AppButton btnText="upload" />
 			</div>
-			<div />
+
+			<div>
+        <h3 class='text-white'>My Profile</h3>
+        <div>
+          <ul><li></li></ul>
+        </div>
+      </div>
 		</div>
 	</Container>
 </div>
+
