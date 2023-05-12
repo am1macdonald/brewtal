@@ -3,7 +3,8 @@ import { supabase } from '$lib/supabaseClient';
 async function signupWithEmail(email: string, password: string) {
   const { data, error } = await supabase.auth.signUp({
     email,
-    password
+    password,
+    redirectTo: 'http://localhost:5173/app/profile/'
   });
   if (data) {
     console.log(data);
@@ -28,7 +29,7 @@ async function signInWithGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: 'http://localhost:5173/profile/'
+      redirectTo: 'http://localhost:5173/app/profile/'
     }
 
   });

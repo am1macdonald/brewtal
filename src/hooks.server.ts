@@ -19,6 +19,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
   if (event.url.pathname.startsWith('/app')) {
     const session = await event.locals.getSession();
+    console.log(session);
     if (!session) {
       // the user is not signed in
       throw redirect(303, '/');

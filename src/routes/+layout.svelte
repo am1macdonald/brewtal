@@ -1,22 +1,20 @@
 <script lang="ts">
-	import '../app.scss';
+	import '../styles.css';
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
-	import type { LayoutData } from './$types';
 
-	export let data: LayoutData;
+	export let data;
+
 	$: ({ supabase, session } = data);
 
 	onMount(() => {
-		const {
-			data: { subscription }
-		} = supabase.auth.onAuthStateChange((event, _session) => {
-			if (_session && session.session && _session.expires_in !== session.session.expires_in) {
+		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
+			if (_session?.expires_at !== session?.expires_at) {
 				invalidate('supabase:auth');
 			}
 		});
 
-		return () => subscription.unsubscribe();
+		return () => data.subscription.unsubscribe();
 	});
 </script>
 

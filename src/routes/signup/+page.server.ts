@@ -1,6 +1,6 @@
 import { fail } from '@sveltejs/kit';
 import type { Actions } from '@sveltejs/kit';
-import { supabase } from '../../../lib/supabaseClient';
+import { supabase } from '$lib/supabaseClient';
 
 export const actions = {
   signup: async ({ request }) => {
