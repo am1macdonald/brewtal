@@ -4,10 +4,11 @@
 	function fireEvent(val: unknown) {
 		console.log(val);
 	}
+	export let value: string;
 </script>
 
-<div>
-	<input class="flex justify-between items-center w-96" type="text" />
+<div class="flex flex-col justify-start items-center w-fit">
+	<input bind:value class="flex justify-between items-center w-96" type="text" />
 	<div>
 		<ul>
 			{#each suggestions as s}
