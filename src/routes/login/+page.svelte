@@ -14,8 +14,8 @@
 		<Auth
 			supabaseClient={data.supabase}
 			view="magic_link"
-      providers={['google', 'facebook', 'discord']}
-			redirectTo={`${data.url}/logging-in?redirect=/`}
+      		providers={['google', 'facebook', 'discord']}
+			redirectTo={`${data.url}/logging-in?redirect=/app/profile/`}
 			showLinks={true}
 			appearance={{ theme: ThemeSupa, style: { input: 'color: #fff' } }}
 		/>

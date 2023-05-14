@@ -3,7 +3,7 @@
 	import AppButton from '$lib/components/inputs/AppButton.svelte';
 </script>
 
-<div class="h-screen flex-1">
+<div class="h-screen flex-">
 	<Container>
     <div>
 			<div class="bg-gray-400 h-36 w-24">
