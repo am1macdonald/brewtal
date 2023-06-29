@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Footer from '$lib/components/layout/Footer.svelte';
+    import HeaderBar from "$lib/components/layout/HeaderBar.svelte";
 
 </script>
-
+<HeaderBar></HeaderBar>
 <slot />
