@@ -5,13 +5,13 @@
 
 	export let data;
 	$: {
-        const redirectTo = $page.url.searchParams.get('redirect');
+		const redirectTo = $page.url.searchParams.get('redirect');
 
-        // check if user has been set in session store then redirect
-        if (browser && data.session) {
-            goto(redirectTo ?? '/account');
-        }
-    }
+		// check if user has been set in session store then redirect
+		if (browser) {
+			goto(redirectTo ?? '/account');
+		}
+	}
 </script>
 
 <section>
