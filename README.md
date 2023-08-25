@@ -1,6 +1,5 @@
 # Brewtal
 
-
 A social platform for sharing coffee brewing profiles with each other so that we can stop wasting precious beans and start drinking excellent coffee the first time, every time.
 
 I'm sure for some of you, getting the perfect extraction is all part of the joy of drinking coffee. Screwing up a couple batches is well worth the satisfaction of dialling in your brew. As for me, I'm sick of wasting beans on poor extraction attempts, and I believe others out there share the same sentiment.
