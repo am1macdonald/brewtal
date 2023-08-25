@@ -1,2 +1,5 @@
-  export interface SuggestionProperty {content: string; url: string; value: unknown};
-
+export interface SuggestionProperty {
+	content: string;
+	url: string;
+	value: unknown;
+}

@@ -1,6 +1,6 @@
 <div class="w-screen px-2 sm:w-96">
 	<form method="POST" action="?/register">
-		<div class="flex flex-col  place-content-center">
+		<div class="flex flex-col place-content-center">
 			<label for="newsletter-name-registration">Name</label><input
 				class="h-12 w-full bg-gray-300"
 				type="text"

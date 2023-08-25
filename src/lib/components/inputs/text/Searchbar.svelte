@@ -8,7 +8,10 @@
 </script>
 
 <div class="flex flex-col justify-start items-center w-fit">
-	<label class="border-2 border-solid rounded border-gray-70 w-fit flex flex-row justify-between items-center" for="search">
+	<label
+		class="border-2 border-solid rounded border-gray-70 w-fit flex flex-row justify-between items-center"
+		for="search"
+	>
 		<img class="invert h-12 w-12" src="/icons/icon-search.svg" alt="search" />
 		<input
 			bind:value
@@ -17,17 +20,17 @@
 			type="text"
 		/>
 	</label>
-<!--	<div>-->
-<!--		<ul>-->
-<!--			{#each suggestions as s}-->
-<!--				<li>-->
-<!--					<button on:click={() => fireEvent(s.value)}>-->
-<!--						{#if s.url !== ''}-->
-<!--							<a href={s.url}>{s.content}</a>-->
-<!--						{/if}-->
-<!--					</button>-->
-<!--				</li>-->
-<!--			{/each}-->
-<!--		</ul>-->
-<!--	</div>-->
+	<!--	<div>-->
+	<!--		<ul>-->
+	<!--			{#each suggestions as s}-->
+	<!--				<li>-->
+	<!--					<button on:click={() => fireEvent(s.value)}>-->
+	<!--						{#if s.url !== ''}-->
+	<!--							<a href={s.url}>{s.content}</a>-->
+	<!--						{/if}-->
+	<!--					</button>-->
+	<!--				</li>-->
+	<!--			{/each}-->
+	<!--		</ul>-->
+	<!--	</div>-->
 </div>

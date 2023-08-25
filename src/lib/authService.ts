@@ -1,48 +1,35 @@
-import { supabase } from '$lib/supabaseClient';
+import bcryptjs from 'bcryptjs';
+import type { RegisterFormData } from '$lib/types/form';
+import prisma from '$lib/prisma';
 
-async function signupWithEmail(email: string, password: string) {
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
-    redirectTo: 'http://localhost:5173/app/profile/'
-  });
-  if (data) {
-    console.log(data);
-  } else if (error) {
-    console.log(error);
-  }
-}
+export const registerUser = async (form: RegisterFormData): Promise<'success' | 'fail'> => {
+	const hashedPassword = await bcryptjs.hash(form.password, 10);
+	const user = await prisma.user.create({
+		data: {
+			email: form.email,
+			password: hashedPassword
+		}
+	});
 
-async function signInWithEmail(email: string, password: string) {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password
-  });
-  if (data) {
-    console.log(data);
-  } else if (error) {
-    console.log(error);
-  }
-}
+	const registration = await prisma.userRegistration.create({
+		data: {
+			email: form.email,
+			userId: user.id
+		}
+	});
 
-async function signInWithGoogle() {
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'google',
-    options: {
-      redirectTo: 'http://localhost:5173/app/profile/'
-    }
+	const success = await prisma.user.update({
+		where: {
+			id: user.id
+		},
+		data: {
+			userRegistrationId: {
+				connect: {
+					id: registration.id
+				}
+			}
+		}
+	});
 
-  });
-
-  if (data) {
-    console.log(data);
-  } else if (error) {
-    console.log(error);
-  }
-}
-
-async function signOut() {
-  const { error } = await supabase.auth.signOut();
-}
-
-export { signupWithEmail, signInWithEmail, signInWithGoogle, signOut };
+	return user && registration ? 'success' : 'fail';
+};
