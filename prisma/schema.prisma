@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model NewsletterSignup {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  uuid      String   @unique
+  confirmed Boolean  @default(false)
+}
+
+model PasswordReset {
+  id        Int      @id @default(autoincrement())
+  email     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  uuid      String   @unique
+  confirmed Boolean  @default(false)
+}
+
+model User {
+  id                 Int               @id @default(autoincrement())
+  email              String            @unique
+  password           String
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+  brews              Brew[]
+  userRegistrationId UserRegistration?
+}
+
+model UserRegistration {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  uuid      String?  @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  confirmed Boolean  @default(false)
+  userId    Int      @unique
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Brew {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+}
